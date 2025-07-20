@@ -143,10 +143,10 @@ app.get('/api/download', async (req, res) => {
         });
 
         if (!downloadResponse.success) {
-            if (downloadResponse.errorType === 4) {
+            if (downloadResponse.errorType === 10) {
                 return res.status(429).json({ 
                     error: 'Rate limited, please try again later',
-                    retryAfter: 60 // Suggested retry after 60 seconds
+                    retryAfter: 1 // Suggested retry after 60 seconds
                 });
             }
             throw new Error(downloadResponse.error || 'Failed to generate download link');
